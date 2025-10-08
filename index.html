@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dành cho em ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffecd2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff6b9d;
+            transform: rotate(45deg);
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff6b9d;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            left: -10px;
+        }
+
+        .heart:after {
+            top: -10px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+
+            10%,
+            90% {
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-20vh) rotate(45deg);
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            z-index: 10;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .emoji {
+            font-size: 80px;
+            animation: bounce 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        h1 {
+            color: #ff6b9d;
+            font-size: 2.5em;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+
+        .message {
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin: 30px 0;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        .no-btn {
+            background: #e0e0e0;
+            color: #666;
+            position: relative;
+        }
+
+        .no-btn:hover {
+            background: #d0d0d0;
+        }
+
+        .celebration {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .celebration-content {
+            text-align: center;
+            color: white;
+            animation: celebrationAnim 1s ease-out;
+        }
+
+        @keyframes celebrationAnim {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .celebration-content h2 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #ff6b9d;
+        }
+
+        .celebration-content p {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="emoji">💝</div>
+        <h1>Em yêu...</h1>
+        <div class="message">
+            Từ lần đầu gặp em, anh đã biết em là người đặc biệt. Nụ cười của em làm anh quên đi tất cả. Mỗi ngày được
+            gặp em là một ngày hạnh phúc nhất của anh.
+            <br><br>
+            <strong>Em có đồng ý làm người yêu anh không? 💕</strong>
+        </div>
+        <div class="buttons">
+            <button class="yes-btn" onclick="sayYes()">Đồng ý ❤️</button>
+            <button class="no-btn" id="noBtn" onmouseover="moveButton()">Không 😢</button>
+        </div>
+    </div>
+
+    <div class="celebration" id="celebration">
+        <div class="celebration-content">
+            <h2>🎉 Yayyy! 🎉</h2>
+            <p>Anh hạnh phúc nhất trên đời! ❤️</p>
+            <p>Em đã làm anh trở thành người hạnh phúc nhất! 💕</p>
+        </div>
+    </div>
+
+    <script>
+        // Tạo trái tim bay
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Nút "Không" chạy trốn
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - 200);
+            const y = Math.random() * (window.innerHeight - 100);
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // Khi click "Đồng ý"
+        function sayYes() {
+            document.getElementById('celebration').style.display = 'flex';
+
+            // Tạo nhiều trái tim bay
+            for (let i = 0; i < 50; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        }
+    </script>
+</body>
+
+</html>
